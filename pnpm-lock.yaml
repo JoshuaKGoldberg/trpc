@@ -1651,8 +1651,8 @@ importers:
         specifier: ^4.0.0
         version: 4.20230215.0
       '@effect/schema':
-        specifier: ^0.26.0
-        version: 0.26.0
+        specifier: ^0.39.0
+        version: 0.39.0(effect@2.0.0-next.37)
       '@fastify/busboy':
         specifier: ^1.2.1
         version: 1.2.1
@@ -1874,8 +1874,8 @@ importers:
         specifier: ^7.18.6
         version: 7.20.2(@babel/core@7.20.2)
       '@effect/schema':
-        specifier: ^0.26.0
-        version: 0.26.0
+        specifier: ^0.39.0
+        version: 0.39.0(effect@2.0.0-next.37)
       '@octokit/graphql':
         specifier: ^7.0.0
         version: 7.0.0
@@ -6283,20 +6283,13 @@ packages:
       '@edge-runtime/primitives': 2.0.2
     dev: true
 
-  /@effect/data@0.14.1:
-    resolution: {integrity: sha512-MV6nI65oYcm8eZHnC0GnwXdY2tvybeb2lKCVFg+j/R5KptCKaunc0hXtPaXUSZiRgKJNxRRoHGtNzR+dZ/yiiA==}
-
-  /@effect/io@0.32.1:
-    resolution: {integrity: sha512-0KkqeJKU4Y2YBAi9RmCJkqABp6ZpxXXkZA1WnhbiVdIPaV+Izp4Ek2wJsnL+CnOzg/gJJ6DTPLLQVXuSz+Pu8Q==}
+  /@effect/schema@0.39.0(effect@2.0.0-next.37):
+    resolution: {integrity: sha512-Bnu8LW6aM7B2QIPVi9YglB/BAbibboFQ7lhaE68FNCyYQcAqCLpq5gufbaCLfxsQ15h1kaD5w+minXS+JJqaxg==}
+    peerDependencies:
+      effect: 2.0.0-next.37
     dependencies:
-      '@effect/data': 0.14.1
-
-  /@effect/schema@0.26.0:
-    resolution: {integrity: sha512-dZNTj9xbvF8orsrSl+VnI6XIFIxXIJS+PNNalq25O06c2/a5oqZKdnlDRORvoeUjdO7X4rPoXJWI5dcNBO5UdQ==}
-    dependencies:
-      '@effect/data': 0.14.1
-      '@effect/io': 0.32.1
-      fast-check: 3.11.0
+      effect: 2.0.0-next.37
+      fast-check: 3.13.1
 
   /@emotion/is-prop-valid@0.8.8:
     resolution: {integrity: sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==}
@@ -12928,6 +12921,9 @@ packages:
   /ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
+  /effect@2.0.0-next.37:
+    resolution: {integrity: sha512-poONzql/x5pn9ZtsmabqiPPZPuiGJoMUoZccGMaCZWYY1DSD8klYNviQEker1BDU0szr+J7bmyFFjgdYT3BVfQ==}
+
   /ejs@3.1.9:
     resolution: {integrity: sha512-rC+QVNMJWv+MtPgkt0y+0rVEIdbtxVADApW9JXrUVlzHetgcyczP/E7DJmWJ4fJCZF2cPcBk0laWO9ZHMG3DmQ==}
     engines: {node: '>=0.10.0'}
@@ -14001,8 +13997,8 @@ packages:
       iconv-lite: 0.4.24
       tmp: 0.0.33
 
-  /fast-check@3.11.0:
-    resolution: {integrity: sha512-H2tctb7AGfFQfz+DEr3UWhJ3s47LXsGp5g3jeJr5tHjnf4xUvpArIqiwcDmL2EXiv+auLHIpF5MqaIpIKvpxiA==}
+  /fast-check@3.13.1:
+    resolution: {integrity: sha512-Xp00tFuWd83i8rbG/4wU54qU+yINjQha7bXH2N4ARNTkyOimzHtUBJ5+htpdXk7RMaCOD/j2jxSjEt9u9ZPNeQ==}
     engines: {node: '>=8.0.0'}
     dependencies:
       pure-rand: 6.0.2
