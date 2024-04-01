@@ -1416,8 +1416,8 @@ importers:
         specifier: link:../server
         version: link:../server
       '@types/isomorphic-fetch':
-        specifier: ^0.0.36
-        version: 0.0.36
+        specifier: ^0.0.39
+        version: 0.0.39
       '@types/node':
         specifier: ^18.16.16
         version: 18.16.16
@@ -9523,8 +9523,8 @@ packages:
       ci-info: 3.8.0
     dev: false
 
-  /@types/isomorphic-fetch@0.0.36:
-    resolution: {integrity: sha512-ulw4d+vW1HKn4oErSmNN2HYEcHGq0N1C5exlrMM0CRqX1UUpFhGb5lwiom5j9KN3LBJJDLRmYIZz1ghm7FIzZw==}
+  /@types/isomorphic-fetch@0.0.39:
+    resolution: {integrity: sha512-I0gou/ZdA1vMG7t7gMzL7VYu2xAKU78rW9U1l10MI0nn77pEHq3tQqHQ8hMmXdMpBlkxZOorjI4sO594Z3kKJw==}
     dev: true
 
   /@types/istanbul-lib-coverage@2.0.4:
