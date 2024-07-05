@@ -57,19 +57,24 @@ export type QueriesOptions<
 > = TQueriesOptions extends []
   ? []
   : TQueriesOptions extends [infer Head]
-  ? [...TResult, GetOptions<Head>]
-  : TQueriesOptions extends [infer Head, ...infer Tail]
-  ? QueriesOptions<Tail, [...TResult, GetOptions<Head>]>
-  : unknown[] extends TQueriesOptions
-  ? TQueriesOptions
-  : TQueriesOptions extends UseQueryOptionsForUseQueries<
-      infer TQueryFnData,
-      infer TError,
-      infer TData,
-      infer TQueryKey
-    >[]
-  ? UseQueryOptionsForUseQueries<TQueryFnData, TError, TData, TQueryKey>[]
-  : UseQueryOptionsForUseQueries[];
+    ? [...TResult, GetOptions<Head>]
+    : TQueriesOptions extends [infer Head, ...infer Tail]
+      ? QueriesOptions<Tail, [...TResult, GetOptions<Head>]>
+      : unknown[] extends TQueriesOptions
+        ? TQueriesOptions
+        : TQueriesOptions extends UseQueryOptionsForUseQueries<
+              infer TQueryFnData,
+              infer TError,
+              infer TData,
+              infer TQueryKey
+            >[]
+          ? UseQueryOptionsForUseQueries<
+              TQueryFnData,
+              TError,
+              TData,
+              TQueryKey
+            >[]
+          : UseQueryOptionsForUseQueries[];
 
 /**
  * @internal

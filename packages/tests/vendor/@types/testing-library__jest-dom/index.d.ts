@@ -11,7 +11,7 @@ import type { TestingLibraryMatchers } from './matchers';
 
 declare global {
     namespace jest {
-        // eslint-disable-next-line @typescript-eslint/ban-types
+        // eslint-disable-next-line @typescript-eslint/no-empty-object-type
         interface Matchers<R = void, T = {}> extends TestingLibraryMatchers<typeof expect.stringContaining, R> {}
     }
 }

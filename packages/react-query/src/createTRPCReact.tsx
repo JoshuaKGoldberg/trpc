@@ -51,7 +51,8 @@ export interface ProcedureUseQuery<
   TPath extends string,
 > {
   <
-    TQueryFnData extends inferTransformedProcedureOutput<TProcedure> = inferTransformedProcedureOutput<TProcedure>,
+    TQueryFnData extends
+      inferTransformedProcedureOutput<TProcedure> = inferTransformedProcedureOutput<TProcedure>,
     TData = TQueryFnData,
   >(
     input: inferProcedureInput<TProcedure>,
@@ -66,7 +67,8 @@ export interface ProcedureUseQuery<
   ): DefinedUseTRPCQueryResult<TData, TRPCClientErrorLike<TProcedure>>;
 
   <
-    TQueryFnData extends inferTransformedProcedureOutput<TProcedure> = inferTransformedProcedureOutput<TProcedure>,
+    TQueryFnData extends
+      inferTransformedProcedureOutput<TProcedure> = inferTransformedProcedureOutput<TProcedure>,
     TData = TQueryFnData,
   >(
     input: inferProcedureInput<TProcedure>,
@@ -147,7 +149,8 @@ export type DecorateProcedure<
        * @see https://trpc.io/docs/client/react/suspense#usesuspensequery
        */
       useSuspenseQuery: <
-        TQueryFnData extends inferTransformedProcedureOutput<TProcedure> = inferTransformedProcedureOutput<TProcedure>,
+        TQueryFnData extends
+          inferTransformedProcedureOutput<TProcedure> = inferTransformedProcedureOutput<TProcedure>,
         TData = TQueryFnData,
       >(
         input: inferProcedureInput<TProcedure>,
@@ -167,38 +170,38 @@ export type DecorateProcedure<
       ];
     }
   : TProcedure extends AnyMutationProcedure
-  ? {
-      /**
-       * @see https://trpc.io/docs/client/react/useMutation
-       */
-      useMutation: <TContext = unknown>(
-        opts?: UseTRPCMutationOptions<
-          inferProcedureInput<TProcedure>,
-          TRPCClientErrorLike<TProcedure>,
+    ? {
+        /**
+         * @see https://trpc.io/docs/client/react/useMutation
+         */
+        useMutation: <TContext = unknown>(
+          opts?: UseTRPCMutationOptions<
+            inferProcedureInput<TProcedure>,
+            TRPCClientErrorLike<TProcedure>,
+            inferTransformedProcedureOutput<TProcedure>,
+            TContext
+          >,
+        ) => UseTRPCMutationResult<
           inferTransformedProcedureOutput<TProcedure>,
+          TRPCClientErrorLike<TProcedure>,
+          inferProcedureInput<TProcedure>,
           TContext
-        >,
-      ) => UseTRPCMutationResult<
-        inferTransformedProcedureOutput<TProcedure>,
-        TRPCClientErrorLike<TProcedure>,
-        inferProcedureInput<TProcedure>,
-        TContext
-      >;
-    }
-  : TProcedure extends AnySubscriptionProcedure
-  ? {
-      /**
-       * @see https://trpc.io/docs/subscriptions
-       */
-      useSubscription: (
-        input: inferProcedureInput<TProcedure>,
-        opts?: UseTRPCSubscriptionOptions<
-          inferTransformedSubscriptionOutput<TProcedure>,
-          TRPCClientErrorLike<TProcedure>
-        >,
-      ) => void;
-    }
-  : never;
+        >;
+      }
+    : TProcedure extends AnySubscriptionProcedure
+      ? {
+          /**
+           * @see https://trpc.io/docs/subscriptions
+           */
+          useSubscription: (
+            input: inferProcedureInput<TProcedure>,
+            opts?: UseTRPCSubscriptionOptions<
+              inferTransformedSubscriptionOutput<TProcedure>,
+              TRPCClientErrorLike<TProcedure>
+            >,
+          ) => void;
+        }
+      : never;
 
 /**
  * @internal
@@ -220,8 +223,8 @@ export type DecoratedProcedureRecord<
         getQueryKey: () => QueryKey;
       }
     : TProcedures[TKey] extends AnyProcedure
-    ? DecorateProcedure<TProcedures[TKey], TFlags, `${TPath}${TKey & string}`>
-    : never;
+      ? DecorateProcedure<TProcedures[TKey], TFlags, `${TPath}${TKey & string}`>
+      : never;
 };
 
 /**

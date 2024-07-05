@@ -20,14 +20,14 @@ export type DecorateProcedureServer<TProcedure extends AnyProcedure> =
         >;
       }
     : TProcedure extends AnyMutationProcedure
-    ? {
-        mutate: Resolver<TProcedure>;
-      }
-    : TProcedure extends AnySubscriptionProcedure
-    ? {
-        subscribe: Resolver<TProcedure>;
-      }
-    : never;
+      ? {
+          mutate: Resolver<TProcedure>;
+        }
+      : TProcedure extends AnySubscriptionProcedure
+        ? {
+            subscribe: Resolver<TProcedure>;
+          }
+        : never;
 
 export type NextAppDirDecoratedProcedureRecord<
   TProcedures extends ProcedureRouterRecord,
@@ -35,6 +35,6 @@ export type NextAppDirDecoratedProcedureRecord<
   [TKey in keyof TProcedures]: TProcedures[TKey] extends AnyRouter
     ? NextAppDirDecoratedProcedureRecord<TProcedures[TKey]['_def']['record']>
     : TProcedures[TKey] extends AnyProcedure
-    ? DecorateProcedureServer<TProcedures[TKey]>
-    : never;
+      ? DecorateProcedureServer<TProcedures[TKey]>
+      : never;
 };

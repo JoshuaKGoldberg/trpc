@@ -480,6 +480,7 @@ test('pipe middlewares - failure', async () => {
     expectTypeOf(opts.ctx).toMatchTypeOf<{
       init: { a: 'a'; b: 'b'; c: { d: 'd'; e: 'e' } };
     }>();
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     opts.ctx.init.a;
     return opts.next({
       ctx: {
@@ -533,6 +534,7 @@ test('pipe middlewares - override', async () => {
 
   const barMiddleware = fooMiddleware.unstable_pipe((opts) => {
     // @ts-expect-error foundation has been overwritten
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     opts.ctx.init.foundation;
     expectTypeOf(opts.ctx).toMatchTypeOf<{
       init: 'override';

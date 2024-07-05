@@ -29,10 +29,12 @@ function sentryTrpcMiddleware(_options: any) {
     next,
     rawInput,
   }: TrpcMiddlewareArguments<T>): T {
+    /* eslint-disable @typescript-eslint/no-unused-expressions */
     path;
     type;
     next;
     rawInput;
+    /* eslint-enable @typescript-eslint/no-unused-expressions */
 
     // This function is effectively what @sentry/node does to provide its trpc middleware.
     return null as any as T;

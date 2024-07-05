@@ -13,12 +13,14 @@ test('route meta types', async () => {
 
   const router = t.router({
     query: procedure.meta(testMeta).query(({ input }) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       input;
     }),
     subscription: procedure
       .meta(testMeta)
       .subscription(() => observable(() => () => '')),
     mutation: procedure.meta(testMeta).mutation(({ input }) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       input;
     }),
   });
@@ -61,13 +63,13 @@ test('route meta in middleware', async () => {
 
   const calls = middleware.mock.calls;
   expect(await proxy.foo1.query()).toBe('bar1');
-  expect(calls[0]![0]!).toHaveProperty('meta');
+  expect(calls[0]![0]).toHaveProperty('meta');
   expect(calls[0]![0]!.meta).toEqual({
     data: 'foo1',
   });
 
   expect(await proxy.foo2.mutate()).toBe('bar2');
-  expect(calls[1]![0]!).toHaveProperty('meta');
+  expect(calls[1]![0]).toHaveProperty('meta');
   expect(calls[1]![0]!.meta).toEqual({
     data: 'foo2',
   });
@@ -100,13 +102,13 @@ test('default meta', async () => {
 
   const calls = middleware.mock.calls;
   expect(await proxy.foo1.query()).toBe('bar1');
-  expect(calls[0]![0]!).toHaveProperty('meta');
+  expect(calls[0]![0]).toHaveProperty('meta');
   expect(calls[0]![0]!.meta).toEqual({
     data: 'foobar',
   });
 
   expect(await proxy.foo2.mutate()).toBe('bar2');
-  expect(calls[1]![0]!).toHaveProperty('meta');
+  expect(calls[1]![0]).toHaveProperty('meta');
   expect(calls[1]![0]!.meta).toEqual({
     data: 'foobar',
   });
@@ -137,13 +139,13 @@ test('default meta with merging', async () => {
 
   const calls = middleware.mock.calls;
   expect(await proxy.foo1.query()).toBe('bar1');
-  expect(calls[0]![0]!).toHaveProperty('meta');
+  expect(calls[0]![0]).toHaveProperty('meta');
   expect(calls[0]![0]!.meta).toEqual({
     data: 'foo1',
   });
 
   expect(await proxy.foo2.mutate()).toBe('bar2');
-  expect(calls[1]![0]!).toHaveProperty('meta');
+  expect(calls[1]![0]).toHaveProperty('meta');
   expect(calls[1]![0]!.meta).toEqual({
     data: 'foo2',
   });
@@ -176,7 +178,7 @@ test('meta chaining with merging', async () => {
 
   const calls = middleware.mock.calls;
   expect(await proxy.foo1.query()).toBe('bar1');
-  expect(calls[0]![0]!).toHaveProperty('meta');
+  expect(calls[0]![0]).toHaveProperty('meta');
   expect(calls[0]![0]!.meta).toEqual({
     data: 'foo2',
   });
@@ -218,7 +220,7 @@ test('complex meta merging', async () => {
 
   const calls = middleware.mock.calls;
   expect(await proxy.foo1.query()).toBe('bar1');
-  expect(calls[0]![0]!).toHaveProperty('meta');
+  expect(calls[0]![0]).toHaveProperty('meta');
   expect(calls[0]![0]!.meta).toEqual({
     data1: 'bazbar',
     data2: 11,

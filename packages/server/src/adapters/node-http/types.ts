@@ -28,19 +28,20 @@ export type NodeHTTPCreateContextOption<
   TRouter extends AnyRouter,
   TRequest,
   TResponse,
-> = object extends inferRouterContext<TRouter>
-  ? {
-      /**
-       * @link https://trpc.io/docs/context
-       **/
-      createContext?: NodeHTTPCreateContextFn<TRouter, TRequest, TResponse>;
-    }
-  : {
-      /**
-       * @link https://trpc.io/docs/context
-       **/
-      createContext: NodeHTTPCreateContextFn<TRouter, TRequest, TResponse>;
-    };
+> =
+  object extends inferRouterContext<TRouter>
+    ? {
+        /**
+         * @link https://trpc.io/docs/context
+         **/
+        createContext?: NodeHTTPCreateContextFn<TRouter, TRequest, TResponse>;
+      }
+    : {
+        /**
+         * @link https://trpc.io/docs/context
+         **/
+        createContext: NodeHTTPCreateContextFn<TRouter, TRequest, TResponse>;
+      };
 
 /**
  * @internal

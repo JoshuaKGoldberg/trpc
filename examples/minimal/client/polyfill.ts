@@ -4,6 +4,6 @@
  */
 
 if (!global.fetch) {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   global.fetch = require('undici').fetch;
 }

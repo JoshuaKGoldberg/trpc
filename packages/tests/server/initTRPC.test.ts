@@ -54,15 +54,15 @@ test('config types', () => {
   {
     const t = initTRPC.create();
 
+    /* eslint-disable @typescript-eslint/no-unused-expressions, @typescript-eslint/no-empty-object-type */
     t._config;
     // ^?
     expectTypeOf<typeof t._config.$types.ctx>().toEqualTypeOf<object>();
     expectTypeOf<typeof t._config.$types.meta>().toEqualTypeOf<object>();
 
-    // eslint-disable-next-line @typescript-eslint/ban-types
     expectTypeOf<typeof t._config.$types.meta>().toEqualTypeOf<{}>();
-    // eslint-disable-next-line @typescript-eslint/ban-types
     expectTypeOf<typeof t._config.$types.meta>().toEqualTypeOf<{}>();
+    /* eslint-enable @typescript-eslint/no-unused-expressions, @typescript-eslint/no-empty-object-type */
   }
 
   {

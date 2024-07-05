@@ -76,9 +76,9 @@ export type inferReactQueryProcedureOptions<
           `${TPath}${TKey & string}.`
         >
       : TRouterOrProcedure extends AnyMutationProcedure
-      ? InferMutationOptions<TRouterOrProcedure>
-      : TRouterOrProcedure extends AnyQueryProcedure
-      ? InferQueryOptions<TRouterOrProcedure, `${TPath}${TKey & string}`>
-      : never
+        ? InferMutationOptions<TRouterOrProcedure>
+        : TRouterOrProcedure extends AnyQueryProcedure
+          ? InferQueryOptions<TRouterOrProcedure, `${TPath}${TKey & string}`>
+          : never
     : never;
 };

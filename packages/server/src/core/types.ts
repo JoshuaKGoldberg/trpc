@@ -3,13 +3,12 @@ import type { inferTransformedProcedureOutput } from '../shared/jsonify';
 import type { AnyProcedure, ProcedureArgs } from './procedure';
 import type { AnyRouter, AnyRouterDef, Router } from './router';
 
-export type inferRouterDef<TRouter extends AnyRouter> = TRouter extends Router<
-  infer TParams
->
-  ? TParams extends AnyRouterDef<any>
-    ? TParams
-    : never
-  : never;
+export type inferRouterDef<TRouter extends AnyRouter> =
+  TRouter extends Router<infer TParams>
+    ? TParams extends AnyRouterDef<any>
+      ? TParams
+      : never
+    : never;
 
 export type inferRouterContext<TRouter extends AnyRouter> =
   inferRouterDef<TRouter>['_config']['$types']['ctx'];
@@ -58,10 +57,10 @@ type GetInferenceHelpers<
     ? TRouterOrProcedure extends AnyRouter
       ? GetInferenceHelpers<TType, TRouterOrProcedure>
       : TRouterOrProcedure extends AnyProcedure
-      ? TType extends 'input'
-        ? inferProcedureInput<TRouterOrProcedure>
-        : inferTransformedProcedureOutput<TRouterOrProcedure>
-      : never
+        ? TType extends 'input'
+          ? inferProcedureInput<TRouterOrProcedure>
+          : inferTransformedProcedureOutput<TRouterOrProcedure>
+        : never
     : never;
 };
 

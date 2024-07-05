@@ -117,8 +117,7 @@ type deriveParamsFromConfig<
   TInputIn = unknown,
 > = {
   _config: TConfig;
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  _ctx_out: {};
+  _ctx_out: object;
   _input_out: UnsetMarker;
   _input_in: TInputIn;
   _output_in: unknown;

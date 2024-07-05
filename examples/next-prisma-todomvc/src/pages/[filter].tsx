@@ -141,6 +141,7 @@ function ListItem(props: { task: Task }) {
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 export default function TodosPage(props: PageProps) {
   const { t } = useLocale();
+  //      ^?
   /*
    * This data will be hydrated from the `prefetch` in `getStaticProps`. This means that the page
    * will be rendered with the data from the server and there'll be no client loading state 👍
@@ -207,6 +208,9 @@ export default function TodosPage(props: PageProps) {
 
   const tasksLeft = allTasks.data?.filter((t) => !t.completed).length ?? 0;
   const tasksCompleted = allTasks.data?.filter((t) => t.completed).length ?? 0;
+  
+  const value = t('what_needs_to_be_done');
+  //    ^?
 
   return (
     <>
@@ -221,6 +225,7 @@ export default function TodosPage(props: PageProps) {
 
           <input
             className="new-todo"
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
             placeholder={t('what_needs_to_be_done') as string}
             autoFocus
             onKeyDown={(e) => {
@@ -250,12 +255,10 @@ export default function TodosPage(props: PageProps) {
                 props.filter === 'completed'
                   ? completed
                   : props.filter === 'active'
-                  ? !completed
-                  : true,
+                    ? !completed
+                    : true,
               )
-              .map((task) => (
-                <ListItem key={task.id} task={task} />
-              ))}
+              .map((task) => <ListItem key={task.id} task={task} />)}
           </ul>
         </section>
 

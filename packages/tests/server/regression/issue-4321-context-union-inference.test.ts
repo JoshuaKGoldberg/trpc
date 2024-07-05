@@ -44,8 +44,10 @@ test('context union type is inferred correctly', async () => {
 
   protectedProcedure.use(async ({ next, ctx }) => {
     // Should be definitely defined
+    /* eslint-disable @typescript-eslint/no-unused-expressions */
     ctx.user.id;
     ctx.session.id;
+    /* eslint-enable @typescript-eslint/no-unused-expressions */
 
     expectTypeOf<SetContext>(ctx);
 

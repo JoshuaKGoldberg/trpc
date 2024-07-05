@@ -2,6 +2,8 @@ import type { DefaultSession, NextAuthOptions } from 'next-auth';
 import { getServerSession } from 'next-auth/next';
 import GitHub from 'next-auth/providers/github';
 
+var unused;
+
 declare module 'next-auth' {
   interface Session {
     user: DefaultSession['user'] & {

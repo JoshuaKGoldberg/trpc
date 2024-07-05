@@ -38,8 +38,10 @@ const appRouter = t.router({
     )
     .mutation(({ input }) => {
       //         ^?
+      /* eslint-disable @typescript-eslint/no-unused-expressions */
       input.roomId;
       input.text;
+      /* eslint-enable @typescript-eslint/no-unused-expressions */
       return input;
     }),
 });

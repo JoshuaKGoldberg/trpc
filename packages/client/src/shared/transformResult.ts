@@ -60,7 +60,7 @@ export function transformResult<TRouter extends AnyRouter, TOutput>(
   try {
     // Use the data transformers on the JSON-response
     result = transformResultInner(response, runtime);
-  } catch (err) {
+  } catch {
     throw new TransformResultError();
   }
 

@@ -12,7 +12,7 @@ export type MergeRouters<
   TRouters extends AnyRouter[],
   TRouterDef extends AnyRouterDef = RouterDef<
     TRouters[0]['_def']['_config'],
-    // eslint-disable-next-line @typescript-eslint/ban-types
+    // eslint-disable-next-line @typescript-eslint/no-empty-object-type
     {}
   >,
 > = TRouters extends [

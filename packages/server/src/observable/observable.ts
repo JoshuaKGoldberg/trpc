@@ -6,12 +6,8 @@ import type {
   TeardownLogic,
 } from './types';
 
-export type inferObservableValue<TObservable> = TObservable extends Observable<
-  infer TValue,
-  unknown
->
-  ? TValue
-  : never;
+export type inferObservableValue<TObservable> =
+  TObservable extends Observable<infer TValue, unknown> ? TValue : never;
 
 export function isObservable(x: unknown): x is Observable<unknown, unknown> {
   return typeof x === 'object' && x !== null && 'subscribe' in x;

@@ -73,6 +73,7 @@ function req(pathname: string): Promise<any> {
       env.TWITTER_ACCESS_TOKEN,
       env.TWITTER_ACCESS_TOKEN_SECRET,
       (err, data) => {
+        /* eslint-disable @typescript-eslint/prefer-promise-reject-errors */
         if (err) {
           reject(err);
           return;
@@ -83,6 +84,7 @@ function req(pathname: string): Promise<any> {
         } catch (err) {
           reject(err);
         }
+        /* eslint-enable @typescript-eslint/prefer-promise-reject-errors */
       },
     );
   });

@@ -31,6 +31,7 @@ export function observableToPromise<TValue>(
       },
       error(data) {
         isDone = true;
+        // eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
         reject(data);
         onDone();
       },

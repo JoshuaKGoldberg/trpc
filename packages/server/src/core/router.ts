@@ -45,11 +45,11 @@ export interface RouterDef<
    * @deprecated
    */
   TOld extends DeprecatedProcedureRouterRecord = {
-    // eslint-disable-next-line @typescript-eslint/ban-types
+    // eslint-disable-next-line @typescript-eslint/no-empty-object-type
     queries: {};
-    // eslint-disable-next-line @typescript-eslint/ban-types
+    // eslint-disable-next-line @typescript-eslint/no-empty-object-type
     mutations: {};
-    // eslint-disable-next-line @typescript-eslint/ban-types
+    // eslint-disable-next-line @typescript-eslint/no-empty-object-type
     subscriptions: {};
   },
 > {
@@ -101,8 +101,8 @@ type DecoratedProcedureRecord<TProcedures extends ProcedureRouterRecord> = {
   [TKey in keyof TProcedures]: TProcedures[TKey] extends AnyRouter
     ? DecoratedProcedureRecord<TProcedures[TKey]['_def']['record']>
     : TProcedures[TKey] extends AnyProcedure
-    ? DecorateProcedure<TProcedures[TKey]>
-    : never;
+      ? DecorateProcedure<TProcedures[TKey]>
+      : never;
 };
 
 /**

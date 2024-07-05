@@ -145,7 +145,7 @@ export function withTRPC<
             }
             try {
               return await opts.ssr({ ctx: appOrPageCtx.ctx });
-            } catch (e) {
+            } catch {
               return false;
             }
           }

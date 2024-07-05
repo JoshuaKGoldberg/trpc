@@ -4,6 +4,7 @@ import type {
   Unsubscribable,
 } from '../types';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface ShareConfig {}
 export function share<TValue, TError>(
   _opts?: ShareConfig,

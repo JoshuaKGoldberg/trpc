@@ -57,8 +57,8 @@ describe('Infinite Query', () => {
               {q.isFetchingNextPage
                 ? 'Loading more...'
                 : q.hasNextPage
-                ? 'Load More'
-                : 'Nothing more to load'}
+                  ? 'Load More'
+                  : 'Nothing more to load'}
             </button>
           </div>
           <div>
@@ -158,8 +158,8 @@ describe('Infinite Query', () => {
               {q.isFetchingNextPage
                 ? 'Loading more...'
                 : q.hasNextPage
-                ? 'Load More'
-                : 'Nothing more to load'}
+                  ? 'Load More'
+                  : 'Nothing more to load'}
             </button>
           </div>
           <div>
@@ -287,8 +287,8 @@ describe('Infinite Query', () => {
               {q.isFetchingNextPage
                 ? 'Loading more...'
                 : q.hasNextPage
-                ? 'Load More'
-                : 'Nothing more to load'}
+                  ? 'Load More'
+                  : 'Nothing more to load'}
             </button>
           </div>
           <div>
@@ -418,6 +418,7 @@ describe('Infinite Query', () => {
   test('useInfiniteQuery() is **not** exposed if there is not cursor', () => {
     ignoreErrors(async () => {
       // @ts-expect-error 'cursor' is required
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       factory.trpc.postById.useInfiniteQuery;
       const ssg = createServerSideHelpers({
         router: factory.appRouter,

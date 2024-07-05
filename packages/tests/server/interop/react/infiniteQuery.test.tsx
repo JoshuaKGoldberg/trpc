@@ -57,8 +57,8 @@ describe('Infinite Query', () => {
               {q.isFetchingNextPage
                 ? 'Loading more...'
                 : q.hasNextPage
-                ? 'Load More'
-                : 'Nothing more to load'}
+                  ? 'Load More'
+                  : 'Nothing more to load'}
             </button>
           </div>
           <div>
@@ -160,8 +160,8 @@ describe('Infinite Query', () => {
               {q.isFetchingNextPage
                 ? 'Loading more...'
                 : q.hasNextPage
-                ? 'Load More'
-                : 'Nothing more to load'}
+                  ? 'Load More'
+                  : 'Nothing more to load'}
             </button>
           </div>
           <div>
@@ -295,8 +295,8 @@ describe('Infinite Query', () => {
               {q.isFetchingNextPage
                 ? 'Loading more...'
                 : q.hasNextPage
-                ? 'Load More'
-                : 'Nothing more to load'}
+                  ? 'Load More'
+                  : 'Nothing more to load'}
             </button>
           </div>
           <div>

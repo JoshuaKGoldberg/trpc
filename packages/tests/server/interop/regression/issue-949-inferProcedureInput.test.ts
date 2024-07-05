@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 // IMPORTANT:
 // needs to be imported from compiled output otherwise we get a false-positive
 import * as trpc from '@trpc/server';

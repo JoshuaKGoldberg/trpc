@@ -7,6 +7,7 @@ const t = initTRPC.create();
 
 const router = t.router({
   q: t.procedure.query(() => {
+    // eslint-disable-next-line @typescript-eslint/only-throw-error
     throw 'hello';
   }),
 });

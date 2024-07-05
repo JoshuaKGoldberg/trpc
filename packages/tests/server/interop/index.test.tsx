@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { waitError } from '../___testHelpers';

@@ -149,6 +149,7 @@ function createServer(opts: ServerOptions) {
       createContext,
       onError(data) {
         // report to error monitoring
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         data;
         // ^?
       },

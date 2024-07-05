@@ -71,6 +71,7 @@ describe('undefined on server response is inferred on the client', () => {
 
   test('using react hooks', async () => {
     const hooks = createTRPCReact<typeof ctx.router>();
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     () => {
       const { data: num, isSuccess: numSuccess } = hooks.num.useQuery();
       if (numSuccess) expectTypeOf(num).toEqualTypeOf<number | undefined>();

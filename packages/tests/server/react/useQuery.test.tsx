@@ -87,6 +87,7 @@ describe('useQuery()', () => {
       expect(query1.trpc.path).toBe('post.byId');
 
       // @ts-expect-error Should not exist
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       proxy.post.byId.useInfiniteQuery;
       const utils = proxy.useUtils();
 

@@ -108,7 +108,7 @@ export class Procedure<
   TParsedOutput,
   TFinalOutput = unknown extends TParsedOutput ? TOutput : TParsedOutput,
 > {
-  private middlewares: Readonly<MiddlewareFunction<any, any, any>[]>;
+  private middlewares: readonly MiddlewareFunction<any, any, any>[];
   private resolver: ProcedureResolver<TContext, TParsedInput, TOutput>;
   private readonly inputParser: ProcedureParser<TParsedInput>;
   private parseInputFn: ParseFn<TParsedInput>;
@@ -388,21 +388,22 @@ export function createProcedure<
 export type inferProcedureFromOptions<
   TInputContext,
   TOptions extends CreateProcedureOptions<any, any, any, any, any, any>,
-> = TOptions extends CreateProcedureOptions<
-  infer TContext,
-  infer TMeta,
-  infer TInput,
-  infer TParsedInput,
-  infer TOutput,
-  infer TParsedOutput
->
-  ? Procedure<
-      TInputContext,
-      TContext,
-      TMeta,
-      unknown extends TInput ? undefined : TInput,
-      unknown extends TParsedInput ? undefined : TParsedInput,
-      TOutput,
-      TParsedOutput
-    >
-  : never;
+> =
+  TOptions extends CreateProcedureOptions<
+    infer TContext,
+    infer TMeta,
+    infer TInput,
+    infer TParsedInput,
+    infer TOutput,
+    infer TParsedOutput
+  >
+    ? Procedure<
+        TInputContext,
+        TContext,
+        TMeta,
+        unknown extends TInput ? undefined : TInput,
+        unknown extends TParsedInput ? undefined : TParsedInput,
+        TOutput,
+        TParsedOutput
+      >
+    : never;

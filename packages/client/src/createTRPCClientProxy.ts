@@ -55,14 +55,14 @@ type DecorateProcedure<TProcedure extends AnyProcedure> =
         query: Resolver<TProcedure>;
       }
     : TProcedure extends AnyMutationProcedure
-    ? {
-        mutate: Resolver<TProcedure>;
-      }
-    : TProcedure extends AnySubscriptionProcedure
-    ? {
-        subscribe: SubscriptionResolver<TProcedure>;
-      }
-    : never;
+      ? {
+          mutate: Resolver<TProcedure>;
+        }
+      : TProcedure extends AnySubscriptionProcedure
+        ? {
+            subscribe: SubscriptionResolver<TProcedure>;
+          }
+        : never;
 
 /**
  * @internal
@@ -74,8 +74,8 @@ type DecoratedProcedureRecord<
   [TKey in keyof TProcedures]: TProcedures[TKey] extends AnyRouter
     ? DecoratedProcedureRecord<TRouter, TProcedures[TKey]['_def']['record']>
     : TProcedures[TKey] extends AnyProcedure
-    ? DecorateProcedure<TProcedures[TKey]>
-    : never;
+      ? DecorateProcedure<TProcedures[TKey]>
+      : never;
 };
 
 const clientCallTypeMap: Record<keyof DecorateProcedure<any>, ProcedureType> = {

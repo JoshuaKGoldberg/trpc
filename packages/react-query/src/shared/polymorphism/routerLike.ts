@@ -16,8 +16,8 @@ export type RouterLike<
   [key in keyof TRecord]: TRecord[key] extends AnyRouter
     ? RouterLike<TRecord[key]>
     : TRecord[key] extends AnyQueryProcedure
-    ? QueryLike<TRecord[key]>
-    : TRecord[key] extends AnyMutationProcedure
-    ? MutationLike<TRecord[key]>
-    : never;
+      ? QueryLike<TRecord[key]>
+      : TRecord[key] extends AnyMutationProcedure
+        ? MutationLike<TRecord[key]>
+        : never;
 };

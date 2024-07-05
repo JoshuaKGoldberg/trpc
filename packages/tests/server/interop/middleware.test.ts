@@ -30,8 +30,8 @@ test('is called if def first', async () => {
 
   const calls = middleware.mock.calls;
   expect(await client.query('foo1')).toBe('bar1');
-  expect(calls[0]![0]!).toHaveProperty('type');
-  expect(calls[0]![0]!).toHaveProperty('ctx');
+  expect(calls[0]![0]).toHaveProperty('type');
+  expect(calls[0]![0]).toHaveProperty('ctx');
   expect(calls[0]![0]!.type).toBe('query');
   expect(middleware).toHaveBeenCalledTimes(1);
 
@@ -85,8 +85,8 @@ test('receives rawInput as param', async () => {
   const calls = middleware.mock.calls;
 
   expect(await client.query('userId', { userId: 'ABCD' })).toBe('ABCD');
-  expect(calls[0]![0]!).toHaveProperty('type');
-  expect(calls[0]![0]!).toHaveProperty('ctx');
+  expect(calls[0]![0]).toHaveProperty('type');
+  expect(calls[0]![0]).toHaveProperty('ctx');
   expect(calls[0]![0]!.type).toBe('query');
   expect(calls[0]![0]!.rawInput).toStrictEqual({ userId: 'ABCD' });
 
@@ -356,9 +356,7 @@ test('measure time middleware', async () => {
         const start = Date.now();
         const result = await next();
         durationMs = Date.now() - start;
-        result.ok
-          ? logMock('OK request timing:', { path, type, durationMs })
-          : logMock('Non-OK request timing', { path, type, durationMs });
+        logMock(result.ok ? 'OK request timing:' : 'Non-OK request timing', { path, type, durationMs });
 
         return result;
       })
@@ -423,7 +421,7 @@ test('middleware throwing should return a union', async () => {
     await client.query('test');
   } catch {}
   expect(fn).toHaveBeenCalledTimes(1);
-  const res = fn.mock.calls[0]![0]!;
+  const res = fn.mock.calls[0]![0];
 
   if (res.ok) {
     throw new Error('wrong state');

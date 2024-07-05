@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 import type { ProcedureParams, ProcedureType } from '..';
 import type { AnyRootConfig, RootConfig } from '../core/internals/config';
 import { getParseFnOrPassThrough } from '../core/internals/getParseFn';
@@ -29,26 +29,27 @@ type AnyOldProcedure = OldProcedure<any, any, any, any, any, any, any, any>;
 type convertProcedureParams<
   TConfig extends AnyRootConfig,
   TProcedure extends AnyOldProcedure,
-> = TProcedure extends OldProcedure<
-  infer _TInputContext,
-  infer TContext,
-  infer TMeta,
-  infer TInput,
-  infer TParsedInput,
-  infer TOutput,
-  infer _TParsedOutput,
-  infer TFinalInput
->
-  ? ProcedureParams<
-      TConfig,
-      TContext,
-      TInput,
-      TParsedInput,
-      TOutput,
-      TFinalInput,
-      TMeta
-    >
-  : never;
+> =
+  TProcedure extends OldProcedure<
+    infer _TInputContext,
+    infer TContext,
+    infer TMeta,
+    infer TInput,
+    infer TParsedInput,
+    infer TOutput,
+    infer _TParsedOutput,
+    infer TFinalInput
+  >
+    ? ProcedureParams<
+        TConfig,
+        TContext,
+        TInput,
+        TParsedInput,
+        TOutput,
+        TFinalInput,
+        TMeta
+      >
+    : never;
 
 type MigrateProcedure<
   TConfig extends AnyRootConfig,

@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 import { defaultFormatter } from '../error/formatter';
 import { TRPCError } from '../error/TRPCError';
 import { getHTTPStatusCodeFromError } from '../http/getHTTPStatusCode';
@@ -85,11 +85,12 @@ export type ProcedureRecord<
 // ts-prune-ignore-next
 export type inferProcedureInput<
   TProcedure extends Procedure<any, any, any, any, any, any, any>,
-> = TProcedure extends Procedure<any, any, any, infer Input, any, any, any>
-  ? undefined extends Input
-    ? Input | null | void // void is necessary to allow procedures with nullish input to be called without an input
-    : Input
-  : undefined;
+> =
+  TProcedure extends Procedure<any, any, any, infer Input, any, any, any>
+    ? undefined extends Input
+      ? Input | null | void // void is necessary to allow procedures with nullish input to be called without an input
+      : Input
+    : undefined;
 
 /**
  * @public
@@ -133,13 +134,14 @@ function getDataTransformer(
  */
 export type inferHandlerInput<
   TProcedure extends Procedure<any, any, any, any, any, any, any>,
-> = TProcedure extends Procedure<any, any, any, infer TInput, any, any, any>
-  ? undefined extends TInput // ? is input optional
-    ? unknown extends TInput // ? is input unset
-      ? [(null | undefined)?] // -> there is no input
-      : [(TInput | null | undefined)?] // -> there is optional input
-    : [TInput] // -> input is required
-  : [(null | undefined)?]; // -> there is no input
+> =
+  TProcedure extends Procedure<any, any, any, infer TInput, any, any, any>
+    ? undefined extends TInput // ? is input optional
+      ? unknown extends TInput // ? is input unset
+        ? [(null | undefined)?] // -> there is no input
+        : [(TInput | null | undefined)?] // -> there is optional input
+      : [TInput] // -> input is required
+    : [(null | undefined)?]; // -> there is no input
 
 type inferHandlerFn<TProcedures extends ProcedureRecord> = <
   TProcedure extends TProcedures[TPath],
@@ -161,18 +163,10 @@ export type inferRouterContext<TRouter extends AnyRouter> = Parameters<
  * @internal
  */
 // ts-prune-ignore-next
-export type inferRouterMeta<TRouter extends AnyRouter> = TRouter extends Router<
-  any,
-  any,
-  infer TMeta,
-  any,
-  any,
-  any,
-  any,
-  any
->
-  ? TMeta
-  : {};
+export type inferRouterMeta<TRouter extends AnyRouter> =
+  TRouter extends Router<any, any, infer TMeta, any, any, any, any, any>
+    ? TMeta
+    : {};
 
 /**
  * @public
@@ -258,25 +252,26 @@ function safeObject(...args: unknown[]) {
 type SwapProcedureContext<
   TProcedure extends Procedure<any, any, any, any, any, any, any>,
   TNewContext,
-> = TProcedure extends Procedure<
-  infer TInputContext,
-  infer _TOldContext,
-  infer TMeta,
-  infer TInput,
-  infer TParsedInput,
-  infer TOutput,
-  infer TParsedOutput
->
-  ? Procedure<
-      TInputContext,
-      TNewContext,
-      TMeta,
-      TInput,
-      TParsedInput,
-      TOutput,
-      TParsedOutput
-    >
-  : never;
+> =
+  TProcedure extends Procedure<
+    infer TInputContext,
+    infer _TOldContext,
+    infer TMeta,
+    infer TInput,
+    infer TParsedInput,
+    infer TOutput,
+    infer TParsedOutput
+  >
+    ? Procedure<
+        TInputContext,
+        TNewContext,
+        TMeta,
+        TInput,
+        TParsedInput,
+        TOutput,
+        TParsedOutput
+      >
+    : never;
 
 type SwapContext<
   TObj extends ProcedureRecord<any, any, any, any, any, any>,

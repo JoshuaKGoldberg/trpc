@@ -7,5 +7,5 @@ export function useEnv() {
 
   const env = customFields.env;
 
-  return env as ReturnType<typeof import('./env')['parseEnv']>;
+  return env as ReturnType<(typeof import('./env'))['parseEnv']>;
 }

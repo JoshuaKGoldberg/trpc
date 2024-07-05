@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import { routerToServerAndClientNew } from './___testHelpers';
 import { initTRPC } from '@trpc/server';
 import { konn } from 'konn';

@@ -10,6 +10,7 @@ const ctx = konn()
     const t = initTRPC.create();
     const appRouter = t.router({
       throws: t.procedure.query(() => {
+        // eslint-disable-next-line @typescript-eslint/only-throw-error
         throw {
           message: 'Custom error message',
           name: 'Third Party API error',
@@ -36,7 +37,7 @@ test('preserve `.cause` even on non-error objects', async () => {
   await waitError<TClientError>(() => ctx.proxy.throws.query());
 
   expect(ctx.onError).toHaveBeenCalledTimes(1);
-  const error = ctx.onError.mock.calls[0]![0]!.error as TRPCError & {
+  const error = ctx.onError.mock.calls[0]![0].error as TRPCError & {
     cause: any;
   };
   expect(error).toMatchInlineSnapshot('[TRPCError: Custom error message]');

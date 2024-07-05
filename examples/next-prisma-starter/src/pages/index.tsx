@@ -74,12 +74,12 @@ const IndexPage: NextPageWithLayout = () => {
           {postsQuery.isFetchingPreviousPage
             ? 'Loading more...'
             : postsQuery.hasPreviousPage
-            ? 'Load More'
-            : 'Nothing more to load'}
+              ? 'Load More'
+              : 'Nothing more to load'}
         </button>
 
         {postsQuery.data?.pages.map((page, index) => (
-          <Fragment key={page.items[0]?.id || index}>
+          <Fragment key={page.items[0]?.id ?? index}>
             {page.items.map((item) => (
               <article key={item.id}>
                 <h3 className="text-2xl font-semibold">{item.title}</h3>

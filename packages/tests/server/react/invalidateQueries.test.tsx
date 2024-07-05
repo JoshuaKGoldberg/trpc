@@ -319,6 +319,7 @@ describe('invalidateQueries()', () => {
 
 test('predicate type should be narrowed', () => {
   const { trpc } = factory;
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   () => {
     const utils = trpc.useUtils();
 

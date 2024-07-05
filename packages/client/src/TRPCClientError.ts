@@ -15,8 +15,8 @@ type inferErrorShape<TInferrable extends ErrorInferrable> =
   TInferrable extends AnyRouter
     ? inferRouterError<TInferrable>
     : TInferrable extends AnyProcedure
-    ? TInferrable['_def']['_config']['$types']['errorShape']
-    : TInferrable;
+      ? TInferrable['_def']['_config']['$types']['errorShape']
+      : TInferrable;
 
 export interface TRPCClientErrorBase<TShape extends DefaultErrorShape> {
   readonly message: string;
